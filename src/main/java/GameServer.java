@@ -5,7 +5,7 @@ import java.net.Socket;
 public class GameServer {
     public static void Serve() {
         boolean listening = true;
-        int port = 80 d;
+        int port = 80;
 
         try (
                 ServerSocket serverSocket = new ServerSocket(port);
