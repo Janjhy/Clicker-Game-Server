@@ -1,55 +1,54 @@
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.Scanner;
+import javax.websocket.Session;
+import java.io.IOException;
 
-public class CommandInterpreter implements Runnable {
-    private Scanner input;
-    private PrintStream output;
+public class CommandInterpreter {
     private ClientInfo user;
     private Clients clients = Clients.getInstance();
     private GameLog gameLog = GameLog.getInstance();
+    private Session session;
 
-    public CommandInterpreter(InputStream x, OutputStream y) {
-        input = new Scanner(x);
-        output = new PrintStream(y, true);
+    public CommandInterpreter(Session x) {
+        session = x;
     }
 
-    @Override
-    public void run() {
+    public void handleMessage(String msg) {
 
-        scanner:
-        while (input.hasNext()) {
-            String text = input.nextLine();
-            String[] split = text.split(" ");
-            System.out.println(text);
-            switch (split[0]) {
-                case "exit":
-                    exit();
-                    break scanner;
-                case "noID":
-                    newUser();
-                    break;
-                case "ID":
-                    setUser(Integer.parseInt(split[1]));
-                    break;
-                case "play":
-                    play();
-                    break;
-                case "reset":
-                    resetUser();
-                    break;
-                default:
-                    output.println("error");
-                    break;
-            }
+        String text = msg;
+        String[] split = text.split(" ");
+        System.out.println(text);
+        switch (split[0]) {
+            case "exit":
+                exit();
+                break;
+            case "noID":
+                newUser();
+                break;
+            case "ID":
+                setUser(Integer.parseInt(split[1]));
+                break;
+            case "play":
+                play();
+                break;
+            case "reset":
+                resetUser();
+                break;
+            default:
+                sendMsg("error");
         }
-        exit();
+    }
+
+    public void sendMsg(String msg) {
+        try {
+            session.getBasicRemote().sendText(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void newUser() { //Adds new user to client list and returns the id to client
         user = clients.newClient();
-        output.printf(":id %d\n", user.getClientID());
+        String text = String.format(":id %d", user.getClientID());
+        sendMsg(text);
     }
 
     public boolean setUser(int id) {
@@ -65,7 +64,7 @@ public class CommandInterpreter implements Runnable {
         if (user == null) {
             return;
         } else if (user.reduce() == false) { //If player has no points, nothing happens
-            output.println(":nopoints");
+            sendMsg(":nopoints");
             return;
         }
         int serverPoints = gameLog.increase();
@@ -74,35 +73,38 @@ public class CommandInterpreter implements Runnable {
     }
 
     public void exit() {
-        input.close();
-        output.close();
+        try {
+            session.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void checkIfWin(int points) {
         if ((points % 500) == 0) {
             user.addPoints(250);
-            output.printf(":won %d\n", 250);
-            output.printf(":next %d\n", 10);
+            sendMsg(String.format(":won %d", 250));
+            sendMsg(String.format(":next %d", 10));
         } else if ((points % 100) == 0) {
             user.addPoints(40);
-            output.printf(":won %d\n", 40);
-            output.printf(":next %d\n", 10);
+            sendMsg(String.format(":won %d", 40));
+            sendMsg(String.format(":next %d", 10));
         } else if ((points % 10) == 0) {
             user.addPoints(10);
-            output.printf(":won %d\n", 10);
-            output.printf(":next %d\n", 10);
+            sendMsg(String.format(":won %d", 10));
+            sendMsg(String.format(":next %d", 10));
         } else {
             int next = (10 - (points % 10));
-            output.printf(":next %d\n", next);
+            sendMsg(String.format(":next %d", next));
         }
-        output.printf(":points %d\n", user.getPoints());
+        sendMsg(String.format(":points %d", user.getPoints()));
     }
 
     public void resetUser() {
         if (user.resetPoints() == false) {
-            output.println(":invalidreset");
+            sendMsg(":invalidreset");
         } else {
-            output.printf(":points %d\n", user.getPoints());
+            sendMsg(String.format(":points %d", user.getPoints()));
         }
     }
 }
