@@ -7,26 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="755e7d41-dc93-4a05-ab1f-5ca9974600fd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ClickerServer_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameWebSocket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClickerServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ClickerServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClickerServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClickerServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CommandInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CommandInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ClickerServer-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ClickerServer-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClickerServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ClickerServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClientInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ClientInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Clients.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Clients.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CommandInterpreter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CommandInterpreter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameObservable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameObservable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Observer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Observer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
